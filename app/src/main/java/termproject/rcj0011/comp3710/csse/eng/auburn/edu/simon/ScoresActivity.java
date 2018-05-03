@@ -14,15 +14,13 @@ public class ScoresActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scores);
 
         TextView highScore = findViewById(R.id.highScoreText);
-        int score = gethighScore();
+        int score = getHighScore();
         String output = "" + score;
         highScore.setText(output);
     }
 
-    public int gethighScore() {
+    public int getHighScore() {
         SharedPreferences prefs = this.getSharedPreferences("scorePrefs", Context.MODE_PRIVATE);
-        int score = prefs.getInt("highScore", 0);
-
-        return score;
+        return prefs.getInt("highScore", 0);
     }
 }

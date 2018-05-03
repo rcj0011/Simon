@@ -18,7 +18,7 @@ public class SettingsActivity extends AppCompatActivity {
         SharedPreferences prefs = this.getSharedPreferences("difficultyPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("difficulty", 1);
-        editor.commit();
+        editor.apply();
 
         System.out.println("Difficulty set to 1.");
     }
@@ -27,7 +27,7 @@ public class SettingsActivity extends AppCompatActivity {
         SharedPreferences prefs = this.getSharedPreferences("difficultyPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("difficulty", 2);
-        editor.commit();
+        editor.apply();
 
         System.out.println("Difficulty set to 2.");
     }
@@ -36,7 +36,7 @@ public class SettingsActivity extends AppCompatActivity {
         SharedPreferences prefs = this.getSharedPreferences("difficultyPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("difficulty", 3);
-        editor.commit();
+        editor.apply();
 
         System.out.println("Difficulty set to 3.");
     }
