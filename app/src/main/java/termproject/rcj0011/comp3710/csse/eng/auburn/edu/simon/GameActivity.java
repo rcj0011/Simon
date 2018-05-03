@@ -1,5 +1,7 @@
 package termproject.rcj0011.comp3710.csse.eng.auburn.edu.simon;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -66,7 +67,7 @@ public class GameActivity extends AppCompatActivity {
 
             if(gameMode == 2) {
                 for (int x = 0; x < userInput.size(); x++) {
-                    if (!(userInput.get(x) == pattern.get(x)))
+                    if (!(userInput.get(x).equals(pattern.get(x))))
                         gameMode = 3;
                     else {
                         score++;
@@ -164,7 +165,13 @@ public class GameActivity extends AppCompatActivity {
 
     public void updateScore(int score) {
         TextView currentScore = findViewById(R.id.scoreText);
-        currentScore.setText("Score: " + score);
+        String output = "Score: " + score;
+        currentScore.setText(output);
+
+        int highScore = gethighScore();
+
+        if(score > highScore)
+            updateHighScore(score);
     }
 
     public void buttonEnabler(String status) {
@@ -188,6 +195,23 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public int getDifficulty() {
-        return R.integer.difficulty;
+        SharedPreferences prefs = this.getSharedPreferences("difficultyPrefs", Context.MODE_PRIVATE);
+        int difficulty = prefs.getInt("difficulty", 0);
+
+        return difficulty;
+    }
+
+    public int gethighScore() {
+        SharedPreferences prefs = this.getSharedPreferences("scorePrefs", Context.MODE_PRIVATE);
+        int score = prefs.getInt("highScore", 0);
+
+        return score;
+    }
+
+    public void updateHighScore(int score) {
+        SharedPreferences prefs = this.getSharedPreferences("scorePrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("highScore", score);
+        editor.commit();
     }
 }

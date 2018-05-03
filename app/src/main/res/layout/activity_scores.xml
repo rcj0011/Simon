@@ -14,4 +14,12 @@
         android:text="High score:"
         android:textSize="30sp" />
 
+    <TextView
+        android:id="@+id/highScoreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="0"
+        android:textSize="50sp" />
+
 </RelativeLayout>

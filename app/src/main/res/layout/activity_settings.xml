@@ -6,6 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="Difficulty Selection"
+        android:textSize="30sp" />
 
+    <Button
+        android:id="@+id/easyButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/mediumButton"
+        android:text="Easy"
+        android:onClick="setEasy" />
+
+    <Button
+        android:id="@+id/mediumButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Medium"
+        android:onClick="setMedium" />
+
+    <Button
+        android:id="@+id/hardButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/mediumButton"
+        android:text="Hard"
+        android:onClick="setHard"/>
 
 </RelativeLayout>
