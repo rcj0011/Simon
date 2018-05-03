@@ -38,37 +38,50 @@ public class GameActivity extends AppCompatActivity {
         score = 0;
         pattern = new ArrayList<>();
         userInput = new ArrayList<>();
-        boolean gameOn = true;
 
-        while(gameOn) {
-            int color = (int)(Math.ceil(Math.random() * 4));
-            pattern.add(color);
+        pattern.add(1);
+        pattern.add(2);
+        pattern.add(3);
+        pattern.add(4);
 
-            System.out.println("Pattern: " + pattern);
+        int gameMode = 1;       //gameMode: 1 -> display pattern, 2 -> get user input, 3 -> game over
 
-            //buttonEnabler("off");
+        while(true) {
+            if(gameMode == 1) {
+                int color = (int) (Math.ceil(Math.random() * 4));
+                pattern.add(color);
 
-            for(int x = 0; x < pattern.size(); x++) {
-                flashButton(pattern.get(x));
-            }
+                System.out.println("Pattern: " + pattern);
 
-            //buttonEnabler("on");
+                //buttonEnabler("off");
 
-            for(int x = 0; x < pattern.size(); x++) {
-
-            }
-
-            for(int x = 0; x < userInput.size(); x++) {
-                if(!(userInput.get(x) == pattern.get(x)))
-                    gameOn = false;
-                else {
-                    score++;
-                    updateScore(score);
-                    userInput.clear();
+                for (int x = 0; x < pattern.size(); x++) {
+                    flashButton(pattern.get(x));
                 }
+
+                //buttonEnabler("on");
+
+                gameMode = 2;
             }
 
-            gameOn = false;
+            if(gameMode == 2) {
+                for (int x = 0; x < userInput.size(); x++) {
+                    if (!(userInput.get(x) == pattern.get(x)))
+                        gameMode = 3;
+                    else {
+                        score++;
+                        updateScore(score);
+                        userInput.clear();
+                    }
+                }
+
+                gameMode = 1;
+            }
+
+            gameMode = 3;
+
+            if(gameMode == 3)
+                break;
         }
     }
 
@@ -81,15 +94,19 @@ public class GameActivity extends AppCompatActivity {
         switch(color) {
             case 1:
                 greenButton.setPressed(true);
+                System.out.println("Flashing green.");
                 break;
             case 2:
                 yellowButton.setPressed(true);
+                System.out.println("Flashing yellow.");
                 break;
             case 3:
                 redButton.setPressed(true);
+                System.out.println("Flashing red.");
                 break;
             case 4:
                 blueButton.setPressed(true);
+                System.out.println("Flashing blue.");
                 break;
         }
 
