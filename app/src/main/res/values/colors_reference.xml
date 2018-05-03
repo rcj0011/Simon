@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <drawable name="green">#21962e</drawable>
+    <drawable name="bright_green">#23ff44</drawable>
+    <drawable name="yellow">#ffe500</drawable>
+    <drawable name="bright_yellow">#f7ff72</drawable>
+    <drawable name="blue">#0600cc</drawable>
+    <drawable name="bright_blue">#38eeff</drawable>
+    <drawable name="red">#cc0000</drawable>
+    <drawable name="bright_red">#ff3838</drawable>
+
+</resources>

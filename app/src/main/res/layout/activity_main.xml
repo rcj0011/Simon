@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="termproject.rcj0011.comp3710.csse.eng.auburn.edu.simon.MainActivity">
+
+    <ImageView
+        android:id="@+id/auburnLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/playButton"
+        android:layout_centerInParent="true"
+        android:src="@drawable/auburn_logo" />
+
+    <Button
+        android:id="@+id/playButton"
+        android:text="Play"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:onClick="playGame" />
+
+    <Button
+        android:id="@+id/scoresButton"
+        android:text="Scores"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/playButton"
+        android:layout_centerInParent="true"
+        android:onClick="scoresPage" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:text="Settings"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scoresButton"
+        android:layout_centerInParent="true"
+        android:onClick="settingsPage" />
+
+    <TextView
+        android:id="@+id/authors"
+        android:text="Cameron Jewell, Paul Ryu, Lance Little"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom|center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="10dp" />
+
+</RelativeLayout>
