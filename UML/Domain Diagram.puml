@@ -1,0 +1,31 @@
+@startuml
+
+title Simon Domain Model
+class GameActivity{
+pattern
+userInput
+speed
+}
+class ScoresActivity{
+highScore
+}
+class SettingsActivity {
+difficulty
+}
+
+ScoresActivity"1" *-- "1" getHighScore: contains >
+SettingsActivity"1" *-- "1" Beginner: contains >
+SettingsActivity"1" *-- "1" Intermediate: contains >
+SettingsActivity"1" *-- "1" Advanced: contains >
+GameActivity"1" *-- "1" simon: contains >
+GameActivity"1" *-- "1" buttonPress: contains >
+
+
+
+GameActivity- ScoresActivity: update highest \nsequence count >
+
+GameActivity-- SettingsActivity : view >
+
+hide methods
+
+@enduml
