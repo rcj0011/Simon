@@ -1,0 +1,85 @@
+@startsalt
+{
+{T
++Press Buttons
+++ Goal
++++ To press buttons in correct sequence
+++ Entry conditions
++++ A random button flashes as the first button of the sequence
+++ Scenario
++++ Red button pressed by player after red button flashes
+++++ Score is incremented by 1
++++ Blue button pressed by player after blue button flashes
+++++ Score is incremented by 1
++++ Green button pressed by player after green button flashes
+++++ Score is incremented by 1
++++ Yellow button pressed by player after yellow button flashes
+++++ Score is incremented by 1
+++ Exceptions
++++ The game is terminated before it concludes
+++ Exit Conditions
++++ Successful Exit Conditions
+++++ Game completes when player presses incorrect button in the sequence
++++++ Final score is recorded
+++++ Final score is stored in high scores if highest achieved so far
++++ Failure Exit Conditions
+++++ Game continues after incorrect button pressed
+++++ High score is not replaced by a newer and higher score
+++++ No score is available
+}
+---
+{T
++ View High Score
+++ Goal
++++ To depict the highest number of correct sequences reached
+++ Entry conditions
++++ Player presses button correctly
+++ Scenario
++++ Number of correct sequences reached is shown to the player.
++++ Initially, the number of sequences reached is zero.
+++ Exceptions
++++ None
+++ Exit Conditions
++++ Successful Exit Conditions
+++++ The score is kept updated with the number of correct sequences reached.
++++ Failure Exit Conditions
+++++ The number of correct sequences reached is not saved before termination of Simon.
+}
+---
+{T
++ View Settings
+++ Goal
++++ To provide the player an option to increase or decrease the game speed (difficulty).
+++ Entry conditions
++++ None
+++ Scenario
++++ Options of 'Beginner', 'Intermediate', and 'Advanced" are presented to the player
++++ Initially, the difficulty setting is 'Beginner'.
+++ Exceptions
++++ None
+++ Exit Conditions
++++ Successful Exit Conditions
+++++ The difficulty is immediately changed and applied to the game after the player selects it
++++ Failure Exit Conditions
+++++ Difficulty is not immediately changed and applied to the game
+++++ Difficulty is not saved before termination of Simon
+}
+---
+{T
++ Publish Count of Correct Sequences Reached
+++ Goal
++++ To send the player's highest score to a central repository of scores
+++ Entry conditions
++++ The player pressed an incorrect button in a sequence
+++ Scenario
++++ The number of correctly pressed sequences is sent to the high scores.
+++ Exceptions
++++ Communication with the high scores is not possible.
+++ Exit Conditions
++++ Successful Exit Conditions
+++++ The score is successfully sent to the high scores.
++++ Failure Exit Conditions
+++++ The score is not published
+}
+}
+@endsalt

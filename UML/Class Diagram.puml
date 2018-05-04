@@ -1,0 +1,43 @@
+
+@startuml
+title Simon Design Class Diagram
+
+class MainActivity{
+onCreate()
+playGame()
+scoresPage()
+settingsPage()
+}
+
+class GameActivity{
+mScore
+mPattern
+mUserInput
+
+simon()
+flashButton()
+greenButtonPress()
+yellowButtonPress()
+redButtonPress()
+blueButtonPress()
+updateScore()
+buttonEnabler()
+getDifficulty()
+}
+
+class ScoresActivity{
+mHighScore
+setHighScore()
+saveState()
+}
+
+class SettingsActivity {
+mDifficulty
+setDifficulty()
+}
+
+
+MainActivity -- GameActivity
+MainActivity -- ScoresActivity
+MainActivity -- SettingsActivity
+@enduml
