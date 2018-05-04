@@ -40,11 +40,6 @@ public class GameActivity extends AppCompatActivity {
         ArrayList<Integer> pattern = new ArrayList<>();
         userInput = new ArrayList<>();
 
-        pattern.add(1);
-        pattern.add(2);
-        pattern.add(3);
-        pattern.add(4);
-
         int gameMode = 1;       //gameMode: 1 -> display pattern, 2 -> get user input, 3 -> game over
 
         while(true) {
@@ -55,33 +50,36 @@ public class GameActivity extends AppCompatActivity {
                 System.out.println("Pattern: " + pattern);
 
                 buttonEnabler("off");
-
-                for (int x = 0; x < pattern.size(); x++) {
+                for (int x = 0; x < pattern.size(); x++)
                     flashButton(pattern.get(x));
-                }
-
                 buttonEnabler("on");
 
                 gameMode = 2;
             }
 
             if(gameMode == 2) {
+
+                //wait for user input with delay from difficulty
+
+                //check userInput against pattern
                 for (int x = 0; x < userInput.size(); x++) {
-                    if (!(userInput.get(x).equals(pattern.get(x))))
-                        gameMode = 3;
-                    else {
+                    if (userInput.get(x).equals(pattern.get(x))) {
                         score++;
                         updateScore(score);
                         userInput.clear();
                     }
+                    else
+                        gameMode = 3;
                 }
 
                 gameMode = 1;
             }
 
-            gameMode = 3;
+            gameMode = 3;   //only activated to show issue with flashing all colors at once
+                            //comment out to return to ANR functionality
 
             if(gameMode == 3)
+                //finish();     //this ends the activity if the sequence is incorrect
                 break;
         }
     }
@@ -92,6 +90,7 @@ public class GameActivity extends AppCompatActivity {
         final Button redButton = findViewById(R.id.redButton);
         final Button blueButton = findViewById(R.id.blueButton);
 
+        //flash bright color
         switch(color) {
             case 1:
                 greenButton.setPressed(true);
@@ -111,6 +110,7 @@ public class GameActivity extends AppCompatActivity {
                 break;
         }
 
+        //return flashed button to normal after 1 second
         Handler handler = new Handler();
         final Runnable r = new Runnable() {
             public void run() {
@@ -163,6 +163,7 @@ public class GameActivity extends AppCompatActivity {
         System.out.println("UserInput: " + userInput);
     }
 
+    //updates displayed score text
     public void updateScore(int score) {
         TextView currentScore = findViewById(R.id.scoreText);
         String output = "Score: " + score;
@@ -174,6 +175,7 @@ public class GameActivity extends AppCompatActivity {
             updateHighScore(score);
     }
 
+    //disables/enables button input
     public void buttonEnabler(String status) {
         Button greenButton = findViewById(R.id.greenButton);
         Button yellowButton = findViewById(R.id.yellowButton);
