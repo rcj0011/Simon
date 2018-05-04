@@ -1,0 +1,24 @@
+@startuml
+
+title Simon System\nSequence Diagram
+actor Player
+participant Simon
+group SD: Simon
+
+Player-> Simon: begin
+
+loop while (gameOn)
+
+Player<-- Simon: BlueButton
+Player<-- Simon: YellowButton
+Player<-- Simon: GreenButton
+Player<-- Simon: RedButton
+
+else
+end
+
+Player<-- Simon: High Score
+
+end
+
+@enduml
